@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PasswordGeneratorComponent } from '../password-generator/password-generator.component';
 
 @Component({
   selector: 'app-password-output',
@@ -6,11 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./password-output.component.scss'],
 })
 export class PasswordOutputComponent implements OnInit {
-  senha: any;
+@Input() senha: string = '';
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(typeof this.senha === 'undefined' || this.senha.length === 0){
+      this.senha = '';
+    }
 
+  }
 
+  copyPassword() {
+    const inputTest = document.querySelector('#text') as HTMLInputElement;
+    inputTest.select();
+    document.execCommand('copy');
+
+  };
+
+  update() {
+    window.setTimeout( () => {
+      location.reload();
+    }, 1500);
+  }
 }
