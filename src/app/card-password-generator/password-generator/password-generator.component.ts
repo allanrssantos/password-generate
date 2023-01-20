@@ -17,6 +17,7 @@ export class PasswordGeneratorComponent implements OnInit {
   upperCaseInputValue: number = 0;
   numberInputValue: number = 0;
   symbolInputValue: number = 0;
+  styleColor = {};
 
   constructor() {}
 
@@ -146,6 +147,45 @@ export class PasswordGeneratorComponent implements OnInit {
     } else {
       this.symbol = false;
     }
+    this.styleClass(this.lowerCase, this.upperCase, this.number, this.symbol);
+  }
+
+private styleClass(lowerCase: boolean, upperCase: boolean, number: boolean, symbol: boolean) {
+
+    if(lowerCase || upperCase || number || symbol){
+      this.styleColor = {
+        'warning': true
+      }
+    } else {
+      this.styleColor = {
+        'warning': false
+      }
+    }
+    if((lowerCase && upperCase) || (lowerCase && number) || (lowerCase && symbol)
+       || (upperCase && number) || (upperCase && symbol) || (number && symbol)) {
+      this.styleColor = {
+        'warning': true,
+        'low-warning': true
+      }
+    }
+    if((lowerCase && upperCase && number) || (lowerCase && upperCase && symbol)
+       || (lowerCase && number && symbol) || (upperCase && number && symbol)) {
+      this.styleColor = {
+        'warning': true,
+        'low-warning': true,
+        'moderate': true
+      }
+    }
+    if(lowerCase && upperCase && number && symbol) {
+      this.styleColor = {
+        'warning': true,
+        'low-warning': true,
+        'moderate': true,
+        'strong': true
+      }
+    }
+
+    return this.styleColor;
   }
 
 }
