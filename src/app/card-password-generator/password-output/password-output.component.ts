@@ -28,6 +28,6 @@ export class PasswordOutputComponent implements OnInit {
   update() {
     window.setTimeout( () => {
       location.reload();
-    }, 1500);
+    }, 1000);
   }
 }
