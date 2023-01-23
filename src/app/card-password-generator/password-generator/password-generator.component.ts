@@ -153,18 +153,15 @@ export class PasswordGeneratorComponent implements OnInit {
   }
 
   isCheckedValid() {
-    const smallLettersInput = document.querySelector(
-      '#smallLetters'
-    ) as HTMLInputElement;
-    const capitalLettersInput = document.querySelector(
-      '#capitalLetters'
-    ) as HTMLInputElement;
+    const smallLettersInput = document.querySelector('#smallLetters') as HTMLInputElement;
+    const capitalLettersInput = document.querySelector('#capitalLetters') as HTMLInputElement;
     const numbersInput = document.querySelector('#numbers') as HTMLInputElement;
     const symbolsInput = document.querySelector('#symbols') as HTMLInputElement;
 
-    if (smallLettersInput.checked === true) {
+    if (smallLettersInput.checked === true ) {
       this.lowerCase = true;
-    } else {
+      console.log(smallLettersInput.labels?.forEach((el) => {return el.id})
+    )} else {
       this.lowerCase = false;
     }
 
@@ -262,6 +259,6 @@ export class PasswordGeneratorComponent implements OnInit {
   }
 
   sumValues(value: any) {
-    return (this.totalLengthInput += Number(value));
+    return this.totalLengthInput += Number(value);
   }
 }
