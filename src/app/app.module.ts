@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { CardPasswordGeneratorComponent } from './card-password-generator/card-password-generator.component';
 import { PasswordOutputComponent } from './card-password-generator/password-output/password-output.component';
 import { PasswordGeneratorComponent } from './card-password-generator/password-generator/password-generator.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardPasswordGeneratorComponent,
     PasswordOutputComponent,
-    PasswordGeneratorComponent
+    PasswordGeneratorComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
