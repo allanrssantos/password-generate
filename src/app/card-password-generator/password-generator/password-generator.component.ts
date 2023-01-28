@@ -144,7 +144,7 @@ export class PasswordGeneratorComponent implements OnInit {
     return shuffledString;
   }
 
-  manipulateValues(totalLength: number) {
+  manipulateValues() {
     this.generatePassword(this.totalLengthInput);
   }
 
@@ -153,15 +153,18 @@ export class PasswordGeneratorComponent implements OnInit {
   }
 
   isCheckedValid() {
-    const smallLettersInput = document.querySelector('#smallLetters') as HTMLInputElement;
-    const capitalLettersInput = document.querySelector('#capitalLetters') as HTMLInputElement;
+    const smallLettersInput = document.querySelector(
+      '#smallLetters'
+    ) as HTMLInputElement;
+    const capitalLettersInput = document.querySelector(
+      '#capitalLetters'
+    ) as HTMLInputElement;
     const numbersInput = document.querySelector('#numbers') as HTMLInputElement;
     const symbolsInput = document.querySelector('#symbols') as HTMLInputElement;
 
-    if (smallLettersInput.checked === true ) {
+    if (smallLettersInput.checked === true) {
       this.lowerCase = true;
-      console.log(smallLettersInput.labels?.forEach((el) => {return el.id})
-    )} else {
+    } else {
       this.lowerCase = false;
     }
 
@@ -258,7 +261,24 @@ export class PasswordGeneratorComponent implements OnInit {
     return this.styleColor, this.styleStrong;
   }
 
-  sumValues(value: any) {
-    return this.totalLengthInput += Number(value);
+  sumValues() {
+
+    let sumvalues = [{ valor: 0 }];
+
+    const upperCaseInput = document.getElementById('upperCaseLetters') as HTMLInputElement;
+    const lowerCaseInput = document.getElementById('lowerCaseLetters') as HTMLInputElement;
+    const numberInput = document.getElementById('number') as HTMLInputElement;
+    const symbolInput = document.getElementById('symbol') as HTMLInputElement;
+
+    let val1 = Number(upperCaseInput?.value) || 0;
+    let val2 = Number(lowerCaseInput?.value) || 0;
+    let val3 = Number(numberInput?.value) || 0;
+    let val4 = Number(symbolInput?.value) || 0;
+
+    sumvalues.map((value) => {
+      value.valor = val1 + val2 + val3 + val4;
+    });
+    this.totalLengthInput = sumvalues[0].valor;
+
   }
 }
