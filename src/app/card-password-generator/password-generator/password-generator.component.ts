@@ -13,10 +13,6 @@ export class PasswordGeneratorComponent implements OnInit {
   upperCase: boolean = false;
   number: boolean = false;
   symbol: boolean = false;
-  lowerCaseInputValue: number = 0;
-  upperCaseInputValue: number = 0;
-  numberInputValue: number = 0;
-  symbolInputValue: number = 0;
   styleColor = {};
   styleStrong = {};
   textStrong: string = 'FORÇA';
@@ -35,45 +31,31 @@ export class PasswordGeneratorComponent implements OnInit {
     const numberInput = document.querySelector('#number') as HTMLInputElement;
     const symbolInput = document.querySelector('#symbol') as HTMLInputElement;
 
-    const passwordLength = +length;
+    const passwordLength =+ length;
     const rules: any[] = [];
 
     if (smallLettersInput.checked === true && lowerCaseInput.value != '') {
-      rules.push({
-        chars: 'abcdefghijklmnopqrstuvwxyz',
-        min: lowerCaseInput.value,
-      });
-      this.lowerCaseInputValue = parseInt(lowerCaseInput.value);
+      rules.push({ chars: 'abcdefghijklmnopqrstuvwxyz',  min: lowerCaseInput.value });
     } else {
       rules.push({ chars: '', min: 0 });
-      this.lowerCaseInputValue = 0;
     }
 
     if (capitalLettersInput.checked === true && upperCaseInput.value != '') {
-      rules.push({
-        chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        min: upperCaseInput.value,
-      });
-      this.upperCaseInputValue = parseInt(upperCaseInput.value);
+      rules.push({ chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', min: upperCaseInput.value });
     } else {
       rules.push({ chars: '', min: 0 });
-      this.upperCaseInputValue = 0;
     }
 
     if (numbersInput.checked === true && numberInput.value != '') {
       rules.push({ chars: '0123456789', min: numberInput.value });
-      this.numberInputValue = parseInt(numberInput.value);
     } else {
       rules.push({ chars: '', min: 0 });
-      this.numberInputValue = 0;
     }
 
     if (symbolsInput.checked === true && symbolInput.value != '') {
       rules.push({ chars: '!@#$&*?|%+-_./:;=()[]{}', min: symbolInput.value });
-      this.symbolInputValue = parseInt(symbolInput.value);
     } else {
       rules.push({ chars: '', min: 0 });
-      this.symbolInputValue = 0;
     }
 
     if (rules.length === 0) {
