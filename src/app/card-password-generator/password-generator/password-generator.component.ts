@@ -21,41 +21,17 @@ export class PasswordGeneratorComponent implements OnInit {
   styleStrong = {};
   textStrong: string = 'FORÇA';
 
-  smallLettersInput = document.querySelector(
-    '#smallLetters'
-  ) as HTMLInputElement;
-  capitalLettersInput = document.querySelector(
-    '#capitalLetters'
-  ) as HTMLInputElement;
-  numbersInput = document.querySelector('#numbers') as HTMLInputElement;
-  symbolsInput = document.querySelector('#symbols') as HTMLInputElement;
-  lowerCaseInput = document.querySelector(
-    '#lowerCaseLetters'
-  ) as HTMLInputElement;
-  upperCaseInput = document.querySelector(
-    '#upperCaseLetters'
-  ) as HTMLInputElement;
-  numberInput = document.querySelector('#number') as HTMLInputElement;
-  symbolInput = document.querySelector('#symbol') as HTMLInputElement;
   constructor() {}
 
   ngOnInit(): void {}
 
   private generatePassword(length: any) {
-    const smallLettersInput = document.querySelector(
-      '#smallLetters'
-    ) as HTMLInputElement;
-    const capitalLettersInput = document.querySelector(
-      '#capitalLetters'
-    ) as HTMLInputElement;
+    const smallLettersInput = document.querySelector('#smallLetters') as HTMLInputElement;
+    const capitalLettersInput = document.querySelector('#capitalLetters') as HTMLInputElement;
     const numbersInput = document.querySelector('#numbers') as HTMLInputElement;
     const symbolsInput = document.querySelector('#symbols') as HTMLInputElement;
-    const lowerCaseInput = document.querySelector(
-      '#lowerCaseLetters'
-    ) as HTMLInputElement;
-    const upperCaseInput = document.querySelector(
-      '#upperCaseLetters'
-    ) as HTMLInputElement;
+    const lowerCaseInput = document.querySelector('#lowerCaseLetters') as HTMLInputElement;
+    const upperCaseInput = document.querySelector('#upperCaseLetters') as HTMLInputElement;
     const numberInput = document.querySelector('#number') as HTMLInputElement;
     const symbolInput = document.querySelector('#symbol') as HTMLInputElement;
 
@@ -99,12 +75,6 @@ export class PasswordGeneratorComponent implements OnInit {
       rules.push({ chars: '', min: 0 });
       this.symbolInputValue = 0;
     }
-
-    this.totalLengthInput =
-      this.lowerCaseInputValue +
-      this.upperCaseInputValue +
-      this.numberInputValue +
-      this.symbolInputValue;
 
     if (rules.length === 0) {
       return;
@@ -153,12 +123,8 @@ export class PasswordGeneratorComponent implements OnInit {
   }
 
   isCheckedValid() {
-    const smallLettersInput = document.querySelector(
-      '#smallLetters'
-    ) as HTMLInputElement;
-    const capitalLettersInput = document.querySelector(
-      '#capitalLetters'
-    ) as HTMLInputElement;
+    const smallLettersInput = document.querySelector('#smallLetters') as HTMLInputElement;
+    const capitalLettersInput = document.querySelector('#capitalLetters') as HTMLInputElement;
     const numbersInput = document.querySelector('#numbers') as HTMLInputElement;
     const symbolsInput = document.querySelector('#symbols') as HTMLInputElement;
 
